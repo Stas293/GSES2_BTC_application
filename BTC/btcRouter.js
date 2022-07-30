@@ -52,7 +52,7 @@ routes.post('/sendEmails', async (req, res) => {
                     for (let i = 0; i < emails.length; i++) {
                         await btcController.sendEmail(emails[i], result);
                     }
-                    return res.status(200).send({status: 'success', data: emails});
+                    return res.status(200).send({status: 'success', Sent_to: emails});
                 } catch (err) {
                     return res.status(400).send(err);
                 }

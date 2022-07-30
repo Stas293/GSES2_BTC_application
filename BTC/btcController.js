@@ -26,7 +26,11 @@ const sendEmail = function(email, result) {
         from: `"BTC to UAH sender" <${username}>`,
         to: email.email,
         subject: "BTC to UAH",
-        text: `Base: BTC \nCurrent price: ${result.data.amount} UAH \nDate: ${new Date()}`
+        text: `Base: BTC \nCurrent price: ${result.data.amount} UAH \nDate: ${new Date()}`,
+        dsn : {
+            notify: ['failure', 'delay'],
+            recipient: email.email
+        }
     };
     return transporter.sendMail(mailOptions)
 }
